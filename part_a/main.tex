@@ -5,6 +5,7 @@
 \usepackage{lipsum}   % Package to generate dummy text
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{amsmath}
 
 \title{Knowledge Test Robotics Software Engineer Widya Robotics: PART A}
 \author{Alif Wicaksana Ramadhan}
@@ -17,6 +18,27 @@
 
 \textbf{1. Uraikan apa yang dimaksud dengan rigid body transformation! Tuliskan matriks rotasi yang dapat memutar suatu rigid body pada sumbu z dengan sudut putar 30 derajat! Pada sistem ROS, pernahkah anda berhubungan dengan sistem robot yang melibatkan banyak link dan joint? Bagaimana strategi Anda untuk mengatasi permasalahan transformasi dalam sistem robot tersebut?}\\
 
+Rigid body transformation adalah suatu upaya untuk mengubah posisi atau pose dari suatu objek rigid. Salah satu cara melakukan ini adalah dengan menggunakan operasi matriks, atau bisa disebut dengan matriks rotasi. Sebagai contoh, bentuk umum dari matriks rotasi yang memutar objek pada sumbu z dapat dilihat pada Persamaan~\ref{eq:matriks_rotasi}.
+
+\begin{equation}
+    \label{eq:matriks_rotasi}
+    R_{z,\gamma} = \begin{bmatrix} \cos \gamma & -\sin \gamma & 0 \\ \sin \gamma & \cos \gamma & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\end{equation}
+
+Untuk memutar objek sebanyak 30 derajat, bisa melakukan subtitusi nilai 30 derajat pada $\gamma$, sehingga didapatkan matriks berikut:
+
+\begin{equation}
+    R_{z,30} = \begin{bmatrix} \cos 30 & -\sin 30 & 0 \\ \sin 30 & \cos 30 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\end{equation}
+
+yanng jika disederhanakan, akan didapatkan matriks berikut ini sebagai bentuk akhir dari matriks tronsformasi 30 derajat pada sumbu z.
+
+\begin{equation}
+    R_{z,30} = \begin{bmatrix} \frac{\sqrt{3}}{2} & -\frac{1}{2} & 0 \\ \frac{1}{2} & \frac{\sqrt{3}}{2} & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\end{equation}
+
+
+Karena saya sering bermain dengan mobile robot, pengalaman saya dalam menggunakan sistem ROS untuk robot yang melibatkan banyak link dan joint terbatas hanya pada saat kuliah. Pada saat itu saya menggunakan perhitungan manual, memanfaatkan DH-Parameters. Namun, ketika memperlajari lagi, saya menemukan terdapat beberapa package yang bisa digunakan untuk memudahkan hal tersebut. Package tersebut sudah disediakan oleh ROS. Salah satunya adalah dengan package \textit{tf2\_ros} dan dengan mendefinisikan robot dalam file urdf. Namun, saya belum pernah mengerjakan projek dengan aplikasi tersebut. Meski begitu, saya yakin saya bisa mempelajari dengan cepat.
 
 
 \textbf{2. Pada ruang 3 dimensi, diberikan dua vektor a = (a1, a2, a3) dan b = (b1, b2, b3). Uraikan cara anda untuk menghitung sudut yang dibentuk oleh kedua vektor tersebut?}\\
