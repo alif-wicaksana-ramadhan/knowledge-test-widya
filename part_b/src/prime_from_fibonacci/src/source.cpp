@@ -20,15 +20,11 @@ int main(int argc, char **argv)
 
     vector<int> fib = fibo.retrieveFibonacci();
 
-    for (int i = 0; i < fib.size(); i++)
-    {
-        cout << fib[i] << " ";
-    }
-    cout << endl;
+    cout << "Generated " << n << " series of Fibonacci" << endl;
 
     int result = prime.calculateThePrime(fib);
 
-    cout << result << endl;
+    cout << "The total prime number from the Fibonacci series is: " << result << endl;
 
     return 0;
 }
