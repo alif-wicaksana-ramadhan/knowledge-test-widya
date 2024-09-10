@@ -1,4 +1,4 @@
-build/
-devel/
+part_b/build/
+part_b/devel/
 .vscode/
 .catkin_workspace

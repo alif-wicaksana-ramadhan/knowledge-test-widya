@@ -1,0 +1,68 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}   % For UTF-8 encoding
+\usepackage[a4paper, margin=1in]{geometry}   % A4 paper with 1-inch margins
+\usepackage{lipsum}   % Package to generate dummy text
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\title{Knowledge Test Robotics Software Engineer Widya Robotics: PART A}
+\author{Alif Wicaksana Ramadhan}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\textbf{1. Uraikan apa yang dimaksud dengan rigid body transformation! Tuliskan matriks rotasi yang dapat memutar suatu rigid body pada sumbu z dengan sudut putar 30 derajat! Pada sistem ROS, pernahkah anda berhubungan dengan sistem robot yang melibatkan banyak link dan joint? Bagaimana strategi Anda untuk mengatasi permasalahan transformasi dalam sistem robot tersebut?}\\
+
+
+
+\textbf{2. Pada ruang 3 dimensi, diberikan dua vektor a = (a1, a2, a3) dan b = (b1, b2, b3). Uraikan cara anda untuk menghitung sudut yang dibentuk oleh kedua vektor tersebut?}\\
+
+Untuk menghitung sudut yang terbentuk antara vektor a dan vektor b, bisa memanfaatkan perkalian dot matriks. Rumus yang bisa digunakan adalah sebagai berikut:
+
+\begin{equation}
+    \cos \theta = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}||\vec{b}|}
+\end{equation}
+
+Dengan $\vec{a}$ adalah vektor a, dan $\vec{b}$ adalah vektor b. $|\vec{a}|$ dan $|\vec{b}|$ adalah panjang dari masing-masing vektor tersebut. Terakhir, $\theta$ adalah sudut yang dibentuk oleh kedua vektor tersebut. $\vec{a} \cdot \vec{b}$ adalah perkalian dot matriks antara vektor a dan vektor b. Untuk mendapatkan nilai $\theta$, hanya perlu memindahkan operasi "cos" ke ruas kanan. Sehingga akan didapatkan persamaan sebagai berikut:
+
+\begin{equation}
+    \theta = \arccos \left( \frac{\vec{a} \cdot \vec{b}}{|\vec{a}||\vec{b}|} \right)
+\end{equation}
+
+Untuk menggambarkan implementasinya dalam program/aplikasi, berikut pseudocode dari perhitungan sudut yang dibentuk oleh kedua vektor a dan b:
+
+\begin{algorithm}
+    \caption{Perhitungan sudut antara dua vektor}
+    \begin{algorithmic}[1]
+        \State \textbf{Input:} Vec $\vec{a}$, Vec $\vec{b}$
+        \State \textbf{Output:} Theta
+
+        \If {len($\vec{a}$) != len($\vec{b}$)}
+        \State \Return -1
+        \EndIf\\
+
+        \State \textbf{dot} = 0
+        \State \textbf{A} = 0
+        \State \textbf{B} = 0
+        \For {$i$ in range len($\vec{a}$)}
+        \State \textbf{dot} = \textbf{dot} + ($\vec{a_i}$ * $\vec{b_i}$)
+        \State \textbf{A} = \textbf{A} + $\vec{a_i}^2$
+        \State \textbf{B} = \textbf{B} + $\vec{b_i}^2$
+        \EndFor\\
+
+        \State \textbf{A} = $\sqrt{\textbf{A}}$
+        \State \textbf{B} = $\sqrt{\textbf{B}}$
+
+        \State \textbf{theta} = $\arccos \left( \frac{\textbf{dot}}{\textbf{A} \times \textbf{B}} \right)$
+
+        \State \Return \textbf{theta}
+
+    \end{algorithmic}
+\end{algorithm}
+
+
+\end{document}
