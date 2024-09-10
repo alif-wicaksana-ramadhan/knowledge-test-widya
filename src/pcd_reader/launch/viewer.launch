@@ -1,0 +1,21 @@
+<launch>
+
+    <arg name="pcd_file_path" default="$(find pcd_reader)/../../pcd/cat.pcd" />
+
+    <node
+    pkg="rviz"
+    type="rviz"
+    name="rviz" 
+    args="-d $(find pcd_reader)/../../rviz/pcd_viewer.rviz"
+    output="screen"
+    />
+
+    <node
+    pkg="pcd_reader"
+    type="read"
+    name="pcd_reader"
+    args="$(arg pcd_file_path)"
+    output="screen"
+    />
+
+</launch> 
